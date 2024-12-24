@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('jadwal_lapangans', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_sedia');
-            $table->string('time_slot');
-            $table->enum('status', ['Ada','Kosong']);
+            $table->string('slot_waktu');
+            $table->enum('status', ['Ada', 'Kosong']);
             $table->foreignId('lapangan_id')->constrained('lapangans')->nullable;
             $table->timestamps();
         });
