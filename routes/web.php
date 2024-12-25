@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FotoLapanganController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PelangganController;
@@ -15,3 +16,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('lapangan', LapanganController::class);
+Route::resource('foto_lapangan', FotoLapanganController::class);

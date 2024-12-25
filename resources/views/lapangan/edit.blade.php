@@ -43,7 +43,7 @@
                             <label for="harga_per_jam" class="col-md-4 col-form-label text-md-end">{{ __('Harga Per Jam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="harga_per_jam" type="text" class="form-control @error('harga_per_jam') is-invalid @enderror" name="harga_per_jam" value="{{ old('harga_per_jam') }}" required autocomplete="harga_per_jam" autofocus>
+                                <input id="harga_per_jam" type="text" class="form-control @error('harga_per_jam') is-invalid @enderror" name="harga_per_jam" value="{{ old('harga_per_jam') ?? $lapangan->harga_per_jam }}" required autocomplete="harga_per_jam" autofocus>
 
                                 @error('harga_per_jam')
                                 <span class="invalid-feedback" role="alert">

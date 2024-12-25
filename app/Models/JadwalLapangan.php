@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class JadwalLapangan extends Model
+class FotoLapangan extends Model
 {
     //
 }
