@@ -10,4 +10,12 @@ class Lapangan extends Model
     {
         return $this->hasMany(FotoLapangan::class);
     }
+    public function jadwal_lapangans()
+    {
+        return $this->hasMany(JadwalLapangan::class);
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

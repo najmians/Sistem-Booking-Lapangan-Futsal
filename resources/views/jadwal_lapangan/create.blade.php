@@ -5,19 +5,32 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Lapangan') }}</div>
+                <div class="card-header">{{ __('Create Jadwal Lapangan') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('lapangan.update', $lapangan->id) }}">
+                    <form method="POST" action="{{ route('jadwal_lapangan.store') }}">
                         @csrf
-                        @method('PUT')
+
                         <div class="row mb-3">
-                            <label for="nama" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
+                            <label for="lapangan_id" class="col-md-4 col-form-label text-md-end">{{ __('Nama Lapangan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') ?? $lapangan->nama }}" required autocomplete="nama" autofocus>
+                                <select name="lapangan_id" id="lapangan_id" class="form-control @error('lapangan_id') is-invalid @enderror">
+                                    <option value="">--Pilih Lapangan--</option>
+                                    @foreach ($lapangans as $id => $nama)
+                                    <option value="{{ $id }}">{{ $nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
-                                @error('nama')
+                        <div class="row mb-3">
+                            <label for="tanggal_sedia" class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Sedia') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tanggal_sedia" type="date" class="form-control @error('tanggal_sedia') is-invalid @enderror" name="tanggal_sedia" value="{{ old('tanggal_sedia') }}" required autocomplete="tanggal_sedia" autofocus>
+
+                                @error('tanggal_sedia')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -26,26 +39,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="tipe" class="col-md-4 col-form-label text-md-end">{{ __('Tipe') }}</label>
+                            <label for="slot_waktu" class="col-md-4 col-form-label text-md-end">{{ __('Slot Waktu') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tipe" type="text" class="form-control @error('tipe') is-invalid @enderror" name="tipe" value="{{ old('tipe') ?? $lapangan->tipe }}" required autocomplete="tipe" autofocus>
+                                <input id="slot_waktu" type="time" class="form-control @error('slot_waktu') is-invalid @enderror" name="slot_waktu" value="{{ old('slot_waktu') }}" required autocomplete="slot_waktu" autofocus>
 
-                                @error('tipe')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="harga_per_jam" class="col-md-4 col-form-label text-md-end">{{ __('Harga Per Jam') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="harga_per_jam" type="text" class="form-control @error('harga_per_jam') is-invalid @enderror" name="harga_per_jam" value="{{ old('harga_per_jam') ?? $lapangan->harga_per_jam }}" required autocomplete="harga_per_jam" autofocus>
-
-                                @error('harga_per_jam')
+                                @error('slot_waktu')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -58,8 +57,8 @@
 
                             <div class="col-md-6">
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="Aktif">Aktif</option>
-                                    <option value="Tidak aktif">Tidak aktif</option>
+                                    <option value="Ada">Ada</option>
+                                    <option value="Kosong">Kosong</option>
                                 </select>
                             </div>
                         </div>
