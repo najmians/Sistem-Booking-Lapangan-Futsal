@@ -15,9 +15,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('lapangan', LapanganController::class);
-Route::resource('foto_lapangan', FotoLapanganController::class);
-Route::resource('jadwal_lapangan', JadwalLapanganController::class);
-Route::resource('booking', BookingController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::group(['middleware' => 'role:admin'], function () {
+        Route::resource('pelanggan', PelangganController::class);
+        Route::resource('lapangan', LapanganController::class);
+        Route::resource('foto_lapangan', FotoLapanganController::class);
+        Route::resource('jadwal_lapangan', JadwalLapanganController::class);
+        Route::resource('booking', BookingController::class);
+    });
+
+    Route::group(['middleware' => 'role:operator'], function () {
+        Route::resource('booking', BookingController::class);
+    });
+});
