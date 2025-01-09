@@ -12,7 +12,7 @@ class LapanganController extends Controller
      */
     public function index()
     {
-        $lapangans = \App\Models\Lapangan::paginate(3);
+        $lapangans = \App\Models\Lapangan::paginate(10);
         return view('lapangan.index', compact('lapangans'));
     }
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FotoLapanganController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalLapanganController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PelangganController;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'role:admin'], function () {
         Route::resource('pelanggan', PelangganController::class);
         Route::resource('lapangan', LapanganController::class);
+        Route::resource('kategori', KategoriController::class);
         Route::resource('foto_lapangan', FotoLapanganController::class);
         Route::resource('jadwal_lapangan', JadwalLapanganController::class);
-        Route::resource('booking', BookingController::class);
     });
 
-    Route::group(['middleware' => 'role:operator'], function () {
+    Route::middleware(['role:admin,operator'])->group(function () {
         Route::resource('booking', BookingController::class);
     });
 });

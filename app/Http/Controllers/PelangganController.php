@@ -12,7 +12,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $pelanggans = \App\Models\Pelanggan::paginate(3);
+        $pelanggans = \App\Models\Pelanggan::paginate(10);
         return view('pelanggan.index', compact('pelanggans'));
     }
 

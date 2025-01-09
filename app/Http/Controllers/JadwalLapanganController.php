@@ -13,7 +13,7 @@ class JadwalLapanganController extends Controller
      */
     public function index()
     {
-        $jadwal_lapangans = JadwalLapangan::with("lapangan")->paginate(3);
+        $jadwal_lapangans = JadwalLapangan::with("lapangan")->paginate(10);
         return view('jadwal_lapangan.index', compact('jadwal_lapangans'));
     }
 

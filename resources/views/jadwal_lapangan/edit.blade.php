@@ -60,6 +60,7 @@
 
                             <div class="col-md-6">
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="">--Pilih Status--</option>
                                     <option value="Ada">Ada</option>
                                     <option value="Kosong">Kosong</option>
                                 </select>

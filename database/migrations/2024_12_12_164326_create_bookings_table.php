@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tgl_booking');
             $table->string('waktu_mulai');
             $table->string('waktu_selesai');
-            $table->unsignedBigInteger('total_harga');
+            $table->string('total_harga');
             $table->enum('status', ['pending', 'confirmed', 'canceled']);
             $table->foreignId('pelanggan_id')->constrained('pelanggans')->nullable;
             $table->foreignId('lapangan_id')->constrained('lapangans')->nullable;

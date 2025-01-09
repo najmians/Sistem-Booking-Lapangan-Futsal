@@ -13,7 +13,7 @@ class FotoLapanganController extends Controller
      */
     public function index()
     {
-        $foto_lapangans = FotoLapangan::with("lapangan")->paginate(3);
+        $foto_lapangans = FotoLapangan::with("lapangan")->paginate(10);
         return view('foto_lapangan.index', compact('foto_lapangans'));
     }
 

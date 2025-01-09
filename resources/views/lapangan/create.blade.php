@@ -29,13 +29,15 @@
                             <label for="tipe" class="col-md-4 col-form-label text-md-end">{{ __('Tipe') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tipe" type="text" class="form-control @error('tipe') is-invalid @enderror" name="tipe" value="{{ old('tipe') }}" required autocomplete="tipe" autofocus>
-
-                                @error('tipe')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <select name="tipe" id="tipe" class="form-control @error('tipe') is-invalid @enderror">
+                                    <option value="">--Pilih Tipe--</option>
+                                    <option value="Rumput Sintetis">Rumput Sintetis</option>
+                                    <option value="Vinyl">Vinyl</option>
+                                    <option value="Parquet (Kayu)">Parquet (Kayu)</option>
+                                    <option value="Semen (Beton)">Semen (Beton)</option>
+                                    <option value="Aspal">Aspal</option>
+                                    <option value="Karpet">Karpet</option>
+                                </select>
                             </div>
                         </div>
 
@@ -58,6 +60,7 @@
 
                             <div class="col-md-6">
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="">--Pilih Status--</option>
                                     <option value="Aktif">Aktif</option>
                                     <option value="Tidak aktif">Tidak aktif</option>
                                 </select>
